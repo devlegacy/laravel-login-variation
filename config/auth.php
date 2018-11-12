@@ -40,7 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'webcustomclient' => [
+            'driver' => 'session',
+            'provider' => 'customclient',
+        ],
+        'webcustomadmin' => [
+            'driver' => 'session',
+            'provider' => 'customadmin',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,7 +76,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
+        'customclient' => [
+            'driver' => 'legacy',
+            'model' => App\Client::class,
+        ],
+        'customadmin' => [
+            'driver' => 'legacy',
+            'model' => App\Admin::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -94,6 +108,16 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'customclient' => [
+            'provider' => 'customclient',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'customadmin' => [
+            'provider' => 'customadmin',
             'table' => 'password_resets',
             'expire' => 60,
         ],
